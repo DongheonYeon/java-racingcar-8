@@ -19,11 +19,11 @@ public class RacingGameController {
 
     public void runGame() {
         // 자동차 이름 입력
-        List<String> carNames = inputView.getCarNames();
+        List<String> carNames = inputView.readCarNames();
         validator.validateCarNames(carNames);
 
         // 시도 횟수 입력
-        int attemptsNum = inputView.getAttemptsNum();
+        int attemptsNum = inputView.readAttemptsNum();
         validator.validateAttemptsNum(attemptsNum);
 
         // 게임 생성 및 실행
