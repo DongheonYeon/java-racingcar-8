@@ -4,12 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import static org.assertj.core.api.Assertions.*;
 
-
-import java.util.List;
-import java.util.ArrayList;
-
 import racingcar.model.Car;
 import racingcar.model.CarList;
+
+import java.util.List;
+
 
 public class CarListTest {
 

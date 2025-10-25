@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.model.CarList;
 import racingcar.utils.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -27,8 +28,10 @@ public class RacingGameController {
         validator.validateAttemptsNum(attemptsNum);
 
         // 게임 생성 및 실행
+        CarList cars = new CarList(carNames);
+
 
         // 결과 출력
-        outputView.printRoundResult();
+//        outputView.printRoundResult();
     }
 }

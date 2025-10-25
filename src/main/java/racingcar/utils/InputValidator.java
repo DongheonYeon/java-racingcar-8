@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Set;
 
 public class InputValidator {
+    // 시도 횟수 검증
     public void validateAttemptsNum(int tryCount) {
         if (tryCount < 1) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
     }
 
+    // 자동차 이름 검증
     public void validateCarNames(List<String> carNames) {
         for (String name : carNames) {
             validateNotEmpty(name);

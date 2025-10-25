@@ -1,13 +1,27 @@
 package racingcar.view;
 
+import racingcar.model.Car;
+
+import java.util.List;
+
 public class OutputView {
-    public void printRoundResult() {
+    public void printRoundResult(List<Car> carList) {
         System.out.println("실행 결과");
+        for (Car car : carList) {
+            System.out.println(car.getName() + " : " +
+                    "-".repeat(Math.max(0, car.getPosition())));
+        }
+        System.out.println();
         
     }
 
-    public void printWinners() {
-        
+    private String getCarPosition(int position) {
+        return "-".repeat(Math.max(0, position));
+    }
+
+    public void printWinners(List<String> winners) {
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+
     }
 
 }
