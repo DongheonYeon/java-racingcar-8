@@ -1,4 +1,5 @@
 package racingcar.model;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
@@ -22,7 +23,7 @@ public class Car {
     }
 
     public void moveTest(int value) {
-        if  (value >= THRESHOLD_VAL) {
+        if (value >= THRESHOLD_VAL) {
             position++;
         }
     }

@@ -15,7 +15,7 @@ public class OutputView {
                     "-".repeat(Math.max(0, car.getPosition())));
         }
         System.out.println();
-        
+
     }
 
     private String getCarPosition(int position) {
