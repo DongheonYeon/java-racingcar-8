@@ -19,6 +19,10 @@ public class CarList {
         }
     }
 
+    public List<Car> getCarList() {
+        return new ArrayList<>(carList);
+    }
+
     public int getFirstPosition() {
         int first = 0;
         for (Car car : carList) {
