@@ -31,6 +31,7 @@ public class RacingGameController {
         // 게임 생성 및 실행
         CarList carList = new CarList(carNames);
         RunGame game = new RunGame(carList);
+        outputView.printOutputHeader();
         game.race(attemptsNum, outputView);
 
         // 결과 출력
