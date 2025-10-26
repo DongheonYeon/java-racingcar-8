@@ -22,12 +22,6 @@ public class Car {
         }
     }
 
-    public void moveTest(int value) {
-        if (value >= THRESHOLD_VAL) {
-            position++;
-        }
-    }
-
     public String getName() {
         return name;
     }
