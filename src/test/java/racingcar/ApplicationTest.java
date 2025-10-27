@@ -31,6 +31,81 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 여러_라운드_테스트() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni,jun", "3");
+                assertThat(output()).contains(
+                    "실행 결과",
+                    "pobi : ---",
+                    "woni : --",
+                    "jun : -",
+                    "최종 우승자 : pobi"
+                );
+            },
+            // round 1: 모두 전진
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            // round 2: pobi, woni 전진
+            MOVING_FORWARD, MOVING_FORWARD, STOP,
+            // round 3: pobi만 전진
+            MOVING_FORWARD, STOP, STOP
+        );
+    }
+
+    @Test
+    void 공동_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni,jun", "2");
+                assertThat(output()).contains(
+                    "최종 우승자 : pobi, woni"
+                );
+            },
+            // round 1: 모두 전진
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            // round 2: pobi, woni만 전진
+            MOVING_FORWARD, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 전원_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni,jun", "1");
+                assertThat(output()).contains(
+                    "최종 우승자 : pobi, woni, jun"
+                );
+            },
+            STOP, STOP, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_이름_길이() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_중복_이름() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("pobi,woni,pobi", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_시도_횟수() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("pobi,woni", "0"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
